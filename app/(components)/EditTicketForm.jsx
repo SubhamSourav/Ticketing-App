@@ -49,7 +49,6 @@ const EditTicketForm = ({ ticket }) => {
       const res = await fetch("/api/Tickets", {
         method: "POST",
         body: JSON.stringify({ formData }),
-        //@ts-ignore
         "Content-Type": "application/json",
       });
       if (!res.ok) {
@@ -57,11 +56,8 @@ const EditTicketForm = ({ ticket }) => {
       }
     }
 
-    // Wait for 2 seconds before redirecting to home page
-    setTimeout(() => {
-      router.refresh();
-      router.push("/");
-    }, 2000);
+    router.refresh();
+    router.push("/");
   };
 
   const categories = [

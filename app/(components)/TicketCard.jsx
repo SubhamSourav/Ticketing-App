@@ -1,8 +1,9 @@
 import DeleteBlock from "./DeleteBlock";
 import PriorityComponent from "./Priority";
 import Link from "next/link";
+import { useState } from "react";
 
-const TicketCard = ({ ticket }) => {
+const TicketCard = ({ ticket, handleDelete }) => {
   function formatTimestamp(timestamp) {
     const options = {
       year: "numeric",
@@ -49,7 +50,7 @@ const TicketCard = ({ ticket }) => {
       <div className="flex mb-3">
         {<PriorityComponent priority={ticket.priority} />}
         <div className="ml-auto">
-          <DeleteBlock id={ticket._id} />
+          <DeleteBlock id={ticket._id} onDelete={handleDelete} />
         </div>
       </div>
       <Link href={`/TicketPage/${ticket._id}`} style={{ display: "contents" }}>
